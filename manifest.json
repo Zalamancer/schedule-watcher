@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "UTD Schedule Helper",
+  "version": "3.1.0",
+  "description": "Auto-clicks Generate Schedules on UTD CollegeScheduler and shows global popups across tabs. Watchlist editable via UI.",
+  "permissions": ["storage", "tabs", "scripting", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["https://utdallas.collegescheduler.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

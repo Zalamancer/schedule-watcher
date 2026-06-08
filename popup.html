@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Schedule Helper</title>
+  <style>
+    body { margin:0; padding:12px; width:340px; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#111; color:#fff; }
+    h1 { font-size:14px; margin:0 0 10px 0; font-weight:900; }
+    .row { display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px; gap:10px; }
+    .muted { opacity:0.85; }
+    .box { border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.05); border-radius:12px; padding:10px; margin-top:10px; }
+    button { width:100%; margin-top:10px; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.18); background:rgba(255,255,255,0.08); color:#fff; font-weight:900; cursor:pointer; }
+    textarea, input { width:100%; box-sizing:border-box; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.18); background:rgba(0,0,0,0.25); color:#fff; outline:none; font-size:13px; }
+    textarea { min-height:92px; resize:vertical; }
+    .small { font-size:12px; opacity:0.85; margin-top:6px; }
+    .btnRow { display:flex; gap:8px; }
+    .btnRow button { width:50%; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+  </style>
+</head>
+<body>
+  <h1>Schedule Helper</h1>
+
+  <div class="row"><span class="muted">Status</span><span id="enabled">—</span></div>
+  <div class="row"><span class="muted">Last click</span><span id="lastClick">—</span></div>
+  <div class="row"><span class="muted">Schedules</span><span id="scheduleCount">—</span></div>
+  <div class="row"><span class="muted">Classes</span><span id="classCount">—</span></div>
+  <div class="row"><span class="muted">Last reload</span><span id="lastReload">—</span></div>
+  <div class="row"><span class="muted">Status msg</span><span id="statusMsg">—</span></div>
+
+  <div class="btnRow">
+    <button id="toggle">Pause</button>
+    <button id="clear">Clear Stats</button>
+  </div>
+
+  <div class="box">
+    <div style="font-weight:900; margin-bottom:8px;">Watchlist (one per line)</div>
+    <textarea id="watchlist" placeholder="CS-4341-001&#10;CS-4341-004"></textarea>
+    <div class="small">If any code appears, you get a <b>red shaking</b> popup across tabs.</div>
+    <button id="saveWatchlist">Save Watchlist</button>
+    <div class="btnRow">
+      <button id="testGreen">Test Green</button>
+      <button id="testRed">Test Red</button>
+    </div>
+  </div>
+
+  <div class="box">
+    <div style="font-weight:900; margin-bottom:8px;">Hidelist (one per line)</div>
+    <textarea id="hidelist" placeholder="CS-4341-002&#10;CS-4341-003"></textarea>
+    <div class="small">Any codes matching these will be hidden from view.</div>
+    <button id="saveHidelist">Save Hidelist</button>
+  </div>
+
+  <div class="box">
+    <div style="font-weight:900; margin-bottom:8px;">Target tab URL contains</div>
+    <input id="targetContains" />
+    <div class="small">Must match your schedules page URL. Current default: <code>utdallas.collegescheduler.com/terms/2026%20Spring/options</code></div>
+    <button id="saveTarget">Save Target</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
